@@ -1,6 +1,12 @@
 import { Router } from 'express';
+import atendimentosRouter from './atendimento.routes';
+import usersRouter from './user.routes';
+import sessionsRouter from './sessions.routes';
 
 const routes = Router();
 
-routes.get('/', (req, res) => res.json({ message: 'OK ' }));
+routes.use('/sessions', sessionsRouter);
+routes.use('/users', usersRouter);
+
+routes.use('/atendimentos', atendimentosRouter);
 export default routes;
