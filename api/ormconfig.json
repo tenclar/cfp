@@ -2,7 +2,16 @@
   "type": "postgres",
   "host": "localhost",
    "port": 5432,
-   "username":"cfp",
-   "password": "cfp@123",
-   "database":"cfp"
+   "username":"postgres",
+   "password": "docker",
+   "database":"cfp",
+   "entities": [
+    "./src/models/*.ts"
+   ],
+   "migrations": [
+     "./src/database/migrations/*.ts"
+   ],
+   "cli": {
+     "migrationsDir":"./src/database/migrations"
+   }
 }
