@@ -1,5 +1,6 @@
-import { getRepository } from 'typeorm';
-
+import { getCustomRepository } from 'typeorm';
+import AtendimentosRepository from '../repositories/AtendimentosRepository';
+import AppError from '../errors/AppError';
 import Atendimento from '../models/Atendimento';
 
 interface Request {
@@ -8,16 +9,26 @@ interface Request {
   valor: number;
 }
 class CreateAtendimentoService {
-  async execute({ decreto_id, tipo, valor }: Request): Promise<Atendimento> {
-    const AtendimentoRepository = getRepository(Atendimento);
+  public async execute({
+    decreto_id,
+    tipo,
+    valor,
+  }: Request): Promise<Atendimento> {
+    const atendimentosRepository = getCustomRepository(AtendimentosRepository);
+    const { total } = await atendimentosRepository.getBalance();
 
-    const user = AtendimentoRepository.create({
+    if (tipo === 'saida' && total < valor) {
+      throw new AppError('You do not have eough balance');
+    }
+
+    const atendimento = atendimentosRepository.create({
       decreto_id,
       tipo,
       valor,
     });
-    await AtendimentoRepository.save(user);
-    return user;
+
+    await atendimentosRepository.save(atendimento);
+    return atendimento;
   }
 }
 export default CreateAtendimentoService;
