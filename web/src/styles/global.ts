@@ -12,11 +12,16 @@ export default createGlobalStyle`
 
 }
 
+html {
+  position: relative;
+  height: 100vh;
+}
+
 body{
   background: #dadada;
   color: #444;
   -webkit-font-smoothing: antialiazed;
-  height: 100%;
+  margin-bottom:60px;
 }
 
 body, input, button {
@@ -27,6 +32,7 @@ body, input, button {
 h1, h2, h3, h4, h5,h6 {
   font-weight: 500;
 }
+
 button {
   cursor: pointer;
 
