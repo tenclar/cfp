@@ -5,16 +5,23 @@ import Decreto from '../models/Decreto';
 interface Request {
   area: number;
   pessoasmetro: number;
-  decreto: string;
+  nome: string;
+  status: boolean;
 }
 class CreateDecretoService {
-  async execute({ area, pessoasmetro, decreto }: Request): Promise<Decreto> {
+  async execute({
+    area,
+    pessoasmetro,
+    nome,
+    status,
+  }: Request): Promise<Decreto> {
     const DecretoRepository = getRepository(Decreto);
 
     const user = DecretoRepository.create({
       area,
       pessoasmetro,
-      decreto,
+      nome,
+      status,
     });
     await DecretoRepository.save(user);
     return user;

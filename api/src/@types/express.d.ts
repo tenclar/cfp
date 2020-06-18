@@ -4,4 +4,9 @@ declare namespace Express {
       id: string;
     };
   }
+  export interface DecretoU {
+    decreto: {
+      id: string;
+    };
+  }
 }

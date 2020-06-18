@@ -12,13 +12,16 @@ class Decreto {
   id: string;
 
   @Column()
-  decreto: string;
+  nome: string;
 
   @Column()
   area: number;
 
   @Column()
   pessoasmetro: number;
+
+  @Column()
+  status: boolean;
 
   @CreateDateColumn()
   created_at: Date;
