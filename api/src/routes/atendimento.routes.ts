@@ -1,16 +1,25 @@
 import { Router } from 'express';
-import { getRepository } from 'typeorm';
+import { getCustomRepository, getRepository } from 'typeorm';
 import CreateAtendimentoService from '../services/CreateAtendimentoService';
-import Atendimento from '../models/Atendimento';
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import AtendimentosRepository from '../repositories/AtendimentosRepository';
+import Decreto from '../models/Decreto';
+/* import ensureAuthenticated from '../middlewares/ensureAuthenticated'; */
 
 const atendimentoRouter = Router();
-atendimentoRouter.use(ensureAuthenticated);
+/* atendimentoRouter.use(ensureAuthenticated); */
 
 atendimentoRouter.get('/', async (req, res) => {
-  const atendimentosRepository = getRepository(Atendimento);
+  const atendimentosRepository = getCustomRepository(AtendimentosRepository);
+  const decretoRepository = getRepository(Decreto);
+  const decreto = await decretoRepository.findOne({
+    where: {
+      status: true,
+    },
+  });
+
   const atendimentos = await atendimentosRepository.find();
-  return res.json(atendimentos);
+  const balance = await atendimentosRepository.getBalance();
+  return res.json({ atendimentos, balance, decreto });
 });
 
 atendimentoRouter.post('/', async (request, response) => {
