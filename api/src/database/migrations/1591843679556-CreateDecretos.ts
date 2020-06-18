@@ -22,7 +22,7 @@ export default class CreateDecreto1591843679556 implements MigrationInterface {
             type: 'int',
           },
           {
-            name: 'decreto',
+            name: 'nome',
             type: 'varchar',
           },
           {

@@ -30,7 +30,7 @@ export default class CreateAtendimento1591846378205
           },
           {
             name: 'tipo',
-            type: 'int',
+            type: 'varchar',
           },
 
           {
