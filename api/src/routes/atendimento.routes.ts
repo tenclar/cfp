@@ -16,8 +16,13 @@ atendimentoRouter.get('/', async (req, res) => {
       status: true,
     },
   });
-
-  const atendimentos = await atendimentosRepository.find();
+  const today = new Date();
+  const atendimentos = await atendimentosRepository.find({
+    where: {
+      created_at: today,
+      decreto_id: decreto?.id,
+    },
+  });
   const balance = await atendimentosRepository.getBalance();
   return res.json({ atendimentos, balance, decreto });
 });
