@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: #fff;
+  height: inherit;
 `;
 
 export const Header = styled.div`
   height: 100px;
+  background: #fff;
   max-width: 100%;
   display: flex;
   justify-content: space-between;
@@ -25,7 +27,7 @@ export const Header = styled.div`
     h1 {
       font-weight: bold;
       color: #363636;
-      font-size: 50px;
+      font-size: 40px;
     }
     a {
       font-weight: bold;
@@ -45,7 +47,7 @@ export const Content = styled.div`
   align-content: stretch;
   background: #dadada;
   border: 2px solid blue;
-  min-height: 82vh;
+  height: 76vh;
 `;
 
 export const TotalLabel = styled.div`
@@ -58,6 +60,7 @@ export const TotalLabel = styled.div`
 export const TotalPessoas = styled.div`
   display: flex;
   margin-left: 20px;
+  margin-right: 40px;
   padding-left: 20px;
   border-left: 1px solid #eee;
   font-size: 50px;
@@ -111,7 +114,7 @@ export const Footer = styled.div`
   background-color: #f5f5f5;
   position: absolute;
   bottom: 0;
-  height: 60px;
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -121,7 +124,7 @@ export const Footer = styled.div`
   nav {
     flex-direction: column;
     align-items: center;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
   }
 

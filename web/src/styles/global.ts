@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,700&display=swap');
+
 
 
 * {
@@ -14,14 +14,18 @@ export default createGlobalStyle`
 
 html {
   position: relative;
+  height: 100%;
   height: 100vh;
+
 }
+
 
 body{
   background: #dadada;
   color: #444;
   -webkit-font-smoothing: antialiazed;
   margin-bottom:60px;
+
 }
 
 body, input, button {
